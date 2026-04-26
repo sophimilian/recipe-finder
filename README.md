@@ -3,7 +3,7 @@
     - A web app that lets you search for recipes by dish name, ingredient, or cuisine. Built for anyone who wants quick meal inspiration without scrolling through food blogs; they just need to search, browse, and save what looks good to them. 
 
 2. Live demo URL
-- [....]
+- [https://sophimilian.github.io/recipe-finder/]
 
 3. Features list (what users can do)
 - Search recipes by keyword, ingredient, or cuisine
