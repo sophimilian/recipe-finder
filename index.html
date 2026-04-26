@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Recipe Finder – search recipes by ingredient, cuisine, or dish name." />
+  <title>Recipe Finder</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-logo">🍴 RecipeFinder</div>
+    <ul class="nav-links">
+      <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+      <li><a href="#" class="nav-link" data-page="saved">Saved</a></li>
+      <li><a href="#" class="nav-link" data-page="about">About</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+  </nav>
+
+  <!-- ===== PAGE: HOME ===== -->
+  <main id="page-home" class="page active" aria-label="Home page">
+
+    <!-- Hero / Search Section -->
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">What are you <em>craving?</em></h1>
+      <p class="hero-sub">Search by dish, ingredient, or cuisine — we'll handle the rest.</p>
+
+      <!-- Search Form -->
+      <form class="search-form" id="searchForm" novalidate aria-label="Recipe search form">
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="e.g. pasta, chicken tacos, vegan..."
+            aria-label="Search recipes"
+            autocomplete="off"
+          />
+          <button type="submit" class="btn-search" aria-label="Search">Search</button>
+        </div>
+        <p class="form-error" id="searchError" role="alert" aria-live="polite"></p>
+      </form>
+
+      <!-- Filters -->
+      <div class="filters" aria-label="Filter options">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="vegetarian">Vegetarian</button>
+        <button class="filter-btn" data-filter="vegan">Vegan</button>
+        <button class="filter-btn" data-filter="gluten free">Gluten-Free</button>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section" aria-labelledby="results-heading">
+      <h2 id="results-heading" class="results-heading visually-hidden">Search Results</h2>
+      <div class="results-grid" id="resultsGrid" aria-live="polite" aria-atomic="true">
+        <!-- Recipe cards injected here by JS -->
+      </div>
+      <p class="empty-state" id="emptyState">Search above to discover recipes ✨</p>
+      <div class="loader hidden" id="loader" aria-label="Loading recipes">
+        <div class="spinner"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== PAGE: RECIPE DETAIL (modal/overlay style) ===== -->
+  <div id="page-detail" class="detail-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+    <div class="detail-card">
+      <button class="btn-back" id="btnBack" aria-label="Go back to results">← Back</button>
+      <img src="" alt="" id="detailImage" class="detail-img" />
+      <div class="detail-body">
+        <h2 id="detailTitle"></h2>
+        <div class="detail-meta" id="detailMeta"></div>
+        <div class="detail-tags" id="detailTags"></div>
+        <h3>Ingredients</h3>
+        <ul id="detailIngredients"></ul>
+        <h3>Instructions</h3>
+        <div id="detailInstructions"></div>
+        <button class="btn-save" id="btnSave" aria-label="Save this recipe">♡ Save Recipe</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PAGE: SAVED ===== -->
+  <main id="page-saved" class="page hidden" aria-label="Saved recipes">
+    <section class="page-header">
+      <h1>Saved Recipes</h1>
+      <p>Your personal cookbook. Pick up where you left off.</p>
+    </section>
+    <div class="results-grid" id="savedGrid" aria-live="polite"></div>
+    <p class="empty-state" id="savedEmpty">No saved recipes yet. Start searching!</p>
+  </main>
+
+  <!-- ===== PAGE: ABOUT ===== -->
+  <main id="page-about" class="page hidden" aria-label="About page">
+    <section class="page-header">
+      <h1>About RecipeFinder</h1>
+    </section>
+    <section class="about-content">
+      <div class="about-card">
+        <span class="about-icon">🔍</span>
+        <h3>Search Anything</h3>
+        <p>Find recipes by dish name, ingredient, or cuisine type using real-time data from the Spoonacular API.</p>
+      </div>
+      <div class="about-card">
+        <span class="about-icon">🔖</span>
+        <h3>Save Your Favorites</h3>
+        <p>Recipes are saved directly to your browser — no account needed. They'll still be there next time.</p>
+      </div>
+      <div class="about-card">
+        <span class="about-icon">🥗</span>
+        <h3>Filter by Diet</h3>
+        <p>Filter results for vegetarian, vegan, or gluten-free diets so you only see what works for you.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
